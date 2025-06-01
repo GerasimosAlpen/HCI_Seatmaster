@@ -1,0 +1,266 @@
+/* Reset & Base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #181818;
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #181818;
+  padding: 18px 40px 18px 32px;
+  border-bottom: 1px solid #222;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #f5d7b5;
+  letter-spacing: 1px;
+}
+.logo span {
+  color: #fff;
+  font-weight: 400;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li {
+  color: #bfa97a;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-links li:hover {
+  color: #fff;
+}
+.profile-icon {
+  width: 38px;
+  height: 38px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header Section */
+.header-section {
+  background: #000;
+  padding: 40px 0 32px 0;
+  border-bottom: 1px solid #222;
+}
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 32px;
+}
+.header-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.weather {
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.weather-icon {
+  margin: 0 4px;
+}
+.header-content h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #fff;
+}
+.header-content p:last-child {
+  font-size: 0.95rem;
+  color: #bfa97a;
+}
+
+/* Fastest Route Section */
+.fastest-route-section {
+  background: #1a1831;
+  padding: 0 0 40px 0;
+  position: relative;
+}
+.help {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #fff;
+  padding: 18px 0 0 40px;
+}
+.contact-us {
+  color: #bfa97a;
+  cursor: pointer;
+  font-weight: bold;
+}
+.fastest-route-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 0 0 0;
+  gap: 32px;
+}
+.route-form-left {
+  flex: 1;
+  min-width: 320px;
+  max-width: 400px;
+}
+.route-form-left h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #fff;
+  text-align: left;
+}
+.route-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input-group label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.input-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.input-icon img {
+  width: 24px;
+  height: 24px;
+}
+select {
+  padding: 12px 28px;
+  border-radius: 22px;
+  border: none;
+  background: #f5d7b5;
+  color: #222;
+  font-size: 1.1rem;
+  min-width: 180px;
+  font-weight: 500;
+  outline: none;
+  appearance: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.go-btn {
+  margin-top: 10px;
+  padding: 10px 0;
+  border-radius: 22px;
+  border: none;
+  background: #f5d7b5;
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 60%;
+  align-self: flex-start;
+}
+.go-btn:hover {
+  background: #ffe2c6;
+}
+.route-form-right {
+  flex: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 340px;
+  min-height: 260px;
+  /* You can adjust min-height as needed */
+}
+.train-img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Buy Ticket Section */
+.buy-ticket-section {
+  background: #181818;
+  padding: 48px 0 32px 0;
+  min-height: 340px;
+}
+.buy-ticket-section h2 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #fff;
+  margin: 0 0 32px 60px;
+}
+.ticket-options {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 20px;
+}
+.ticket-card {
+  background: #111;
+  border-radius: 14px;
+  min-width: 180px;
+  min-height: 260px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 18px 0 18px 0;
+  border: 1px solid #bfa97a22;
+  transition: box-shadow 0.2s, border 0.2s;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 500;
+}
+.ticket-card:hover {
+  border: 1.5px solid #f5d7b5;
+  box-shadow: 0 4px 24px rgba(245, 215, 181, 0.08);
+}
+.ticket-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 18px;
+}
+
+/* Footer */
+footer {
+  background: #181818;
+  color: #bfa97a;
+  text-align: left;
+  padding: 18px 0 18px 60px;
+  font-size: 0.95rem;
+  border-top: 1px solid #222;
+}
+
+/* Tambahkan di PageLRT.css */
+.ticket-card.active-ticket {
+  border: 2px solid #f5d7b5;
+  box-shadow: 0 4px 32px rgba(245, 215, 181, 0.18);
+}
