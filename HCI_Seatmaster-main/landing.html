@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEAT MASTER - Transportation Hub</title>
+    <link rel="stylesheet" href="landing.css" />
+    <style></style>
+  </head>
+  <body>
+    <!-- Login Status (hidden by default) -->
+    <div class="login-status" id="loginStatus" style="display: none">
+      <span>Logged in as: <strong id="username">User</strong></span>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="nav-container">
+        <a href="#" class="logo">SEAT MASTER</a>
+        <nav>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#transportasi">Transportasi</a></li>
+            <li><a href="#route">Route</a></li>
+            <li><a href="#ticket">Capacity</a></li>
+            <li><a href="BuyTicket/BuyTicket.html">Buy Ticket</a></li>
+          </ul>
+        </nav>
+        <a href="Login.html"">LOGIN</a>
+        <!-- <a href="Login.html" class="login-btn">LOGIN</a> -->
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Connecting All your transportation</h1>
+        <div class="transport-showcase">
+          <div class="transportVehicle">
+            <img src="assets/hero.jpg" alt="" />
+          </div>
+        </div>
+        <p class="tagline">Connecting All Your Transportation</p>
+      </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section class="weather-section">
+      <div class="weather-info">
+        <p>
+          Recent Weather at Lebak Bulus: ☀️ Sunny, 32°C (15:21, Sunday, 15 March
+          2025)
+        </p>
+      </div>
+    </section>
+
+    <!-- Transportasi Section -->
+    <section class="transportasi" id="transportasi">
+      <div class="section-content">
+        <h2 class="section-title">Transportasi</h2>
+        <div class="transport-grid">
+          <div class="transport-card">
+            <div class="card-image mrt">
+              <img src="assets/mrt.png" alt="mrt" />
+            </div> 
+            <div class="card-content">
+              <h3 class="card-title">MRT</h3>
+            </div>
+          </div>
+          <div class="transport-card">
+            <div class="card-image lrt">
+              <img src="assets/lrt.png" alt="lrt" />
+            </div>
+            <div class="card-content">
+              <a href="LRTpage/PageLRT.html" class="card-title">LRT</a>  
+            <!-- <h3 class="card-title">LRT</h3> -->
+            </div>
+          </div>
+          <div class="transport-card">
+            <div class="card-image krl">
+              <img src="assets/krl.png" alt="krl" />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">KRL</h3>
+            </div>
+          </div>
+          <div class="transport-card">
+            <div class="card-image transjakarta">
+              <img src="assets/tj.png" alt="transjakarta" />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Trans Jakarta</h3>
+            </div>
+          </div>
+        </div>
+        <p class="connecting-text">Connecting All Your Transportation</p>
+      </div>
+    </section>
+
+    <!-- Help Button -->
+    <div class="help-section">
+      <a href="#" class="help-btn">
+        Need Help?
+        <img src="assets/customer services.png" alt="" />
+      </a>
+    </div>
+
+    <!-- Route Section -->
+    <section class="route-section" id="route">
+      <div class="section-content">
+        <h2 class="route-title">Route</h2>
+        <div class="route-maps">
+          <div class="route-map">
+            <div class="map-image">
+              <div class="map-lines"></div>
+              <span>MRT Route Network</span>
+            </div>
+            <div class="map-label">MRT</div>
+          </div>
+          <div class="route-map">
+            <div class="map-image">
+              <div class="map-lines"></div>
+              <span>LRT Route Network</span>
+            </div>
+            <div class="map-label">LRT</div>
+          </div>
+          <div class="route-map">
+            <div class="map-image">
+              <div class="map-lines"></div>
+              <span>KRL Route Network</span>
+            </div>
+            <div class="map-label">KRL</div>
+          </div>
+          <div class="route-map">
+            <div class="map-image">
+              <div class="map-lines"></div>
+              <span>Trans Jakarta Route Network</span>
+            </div>
+            <div class="map-label">Trans Jakarta</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buy Ticket Section -->
+    <section class="ticket-section" id="ticket">
+      <div class="section-content">
+        <h2 class="ticket-title">Buy Ticket</h2>
+        <div class="ticket-options">
+          <div class="ticket-card">
+            <div>
+              <h3>MRT Ticket</h3>
+              <p>Buy MRT tickets online</p>
+            </div>
+          </div>
+          <div class="ticket-card locked-content">
+            <div>
+              <h3>LRT Ticket</h3>
+              <p>Buy LRT tickets online</p>
+            </div>
+            <div class="lock-overlay">
+              <div class="lock-icon">🔒</div>
+              <div class="lock-text">Content Locked</div>
+            </div>
+          </div>
+          <div class="ticket-card locked-content">
+            <div>
+              <h3>KRL Ticket</h3>
+              <p>Buy KRL tickets online</p>
+            </div>
+            <div class="lock-overlay">
+              <div class="lock-icon">🔒</div>
+              <div class="lock-text">Content Locked</div>
+            </div>
+          </div>
+          <div class="ticket-card locked-content">
+            <div>
+              <h3>Trans Jakarta Ticket</h3>
+              <p>Buy bus tickets online</p>
+            </div>
+            <div class="lock-overlay">
+              <div class="lock-icon">🔒</div>
+              <div class="lock-text">Content Locked</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="landing.js"></script>
+  </body>
+</html>

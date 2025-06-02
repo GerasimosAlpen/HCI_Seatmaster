@@ -1,0 +1,213 @@
+body {
+  background: #181818;
+  font-family: "Poppins", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  width: 100%;
+  background: transparent;
+  padding: 16px 0 0 0;
+  text-align: right;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 40px 0 0;
+  display: flex;
+  gap: 24px;
+  justify-content: flex-end;
+}
+.navbar li {
+  color: #bfa97a;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.navbar li:hover {
+  color: #fff;
+}
+
+.profile-container {
+  max-width: 520px;
+  margin: 40px auto;
+  background: linear-gradient(135deg, #181838 80%, #2b1a38 100%);
+  border-radius: 18px;
+  padding: 28px 0 40px 0;
+  position: relative;
+  border: 3px solid #ff8ed6;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  min-height: 800px;
+  overflow: hidden;
+}
+.profile-container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: url("https://svgshare.com/i/14nK.svg") center/cover no-repeat;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.seat-master {
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 3.2rem;
+  color: #fff;
+  text-shadow: 4px 4px 0 #bfa97a;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0.08em;
+  opacity: 0.97;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.profile-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 90px;
+  gap: 18px;
+}
+
+.you-are-in {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ff8ed6;
+  margin-bottom: 0;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.profile-name {
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.profile-icon {
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #181838;
+  box-shadow: 0 2px 24px #0004;
+}
+
+.profile-buttons {
+  display: flex;
+  gap: 16px;
+  margin: 0 0 0 0;
+  justify-content: center;
+}
+
+.profile-btn {
+  background: #f5d7b5;
+  color: #181838;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 18px;
+  padding: 12px 38px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s;
+}
+.profile-btn:hover {
+  background: #ffe2c6;
+}
+
+.ticket-title {
+  color: #fff;
+  font-size: 2rem;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 18px 0 10px 0;
+}
+
+.ticket-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.ticket-card {
+  background: #f5d7b5;
+  border-radius: 22px;
+  padding: 18px 24px;
+  min-width: 320px;
+  max-width: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 24px #0002;
+  gap: 18px;
+}
+
+.ticket-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #181838;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.ticket-type {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+  letter-spacing: 0.04em;
+}
+
+.ticket-detail {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.ticket-qr {
+  font-family: "Fira Mono", "Consolas", "Courier New", monospace;
+  font-size: 0.95rem;
+  color: #181838;
+  background: #fff;
+  border-radius: 6px;
+  border: 1.5px solid #bfa97a;
+  padding: 4px 6px;
+  margin: 0 0 0 10px;
+  min-width: 60px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
