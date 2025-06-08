@@ -23,7 +23,6 @@
             padding: 20px;
         }
 
-        /* Decorative background elements */
         .bg-decoration {
             position: absolute;
             width: 150px;
@@ -354,7 +353,7 @@
         
         <div class="route-info">
             <span class="route-text" id="routeDisplay">Route: Jakarta → Bandung</span>
-            <span class="price-text" id="priceDisplay">Price: Rp 75,000,-</span>
+            <span class="price-text" id="priceDisplay">Price: Rp 50,000,-</span>
         </div>
         
         <div class="ticket-container">
@@ -425,7 +424,7 @@
             return {
                 start: urlParams.get('start') || 'jakarta',
                 end: urlParams.get('end') || 'bandung',
-                price: urlParams.get('price') || '75000',
+                price: urlParams.get('price') || '50000',
                 payment: urlParams.get('payment') || 'credit'
             };
         }
@@ -478,7 +477,7 @@
             const mockData = {
                 start: 'jakarta',
                 end: 'bandung',
-                price: '75000',
+                price: '50000',
                 payment: 'credit'
             };
             
