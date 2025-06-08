@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+            border: 2px solid #e1e8ed;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .chat-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            height: 400px;
+            border: 2px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .chat-header {
+            background: #495057;
+            color: white;
+            padding: 15px;
+            border-radius: 13px 13px 0 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            background: #28a745;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.bot {
+            background: #e3f2fd;
+            color: #1565c0;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message.user {
+            background: #667eea;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            border-top: 1px solid #e9ecef;
+            background: white;
+            border-radius: 0 0 13px 13px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .send-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .action-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .action-card h3 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .action-card p {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .satisfaction {
+            text-align: center;
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+
+        .satisfaction h3 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .satisfaction-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .satisfaction-btn {
+            padding: 12px 30px;
+            border: 2px solid #e9ecef;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .satisfaction-btn.yes {
+            color: #28a745;
+            border-color: #28a745;
+        }
+
+        .satisfaction-btn.yes:hover {
+            background: #28a745;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .satisfaction-btn.no {
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .satisfaction-btn.no:hover {
+            background: #dc3545;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            color: #6c757d;
+            font-style: italic;
+            padding: 10px 16px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 3px;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #6c757d;
+            border-radius: 50%;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingAnimation {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .satisfaction-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CUSTOMER SERVICE</h1>
+            <p>🤖 Powered by AI - Halo! Ada yang bisa kami bantu hari ini?</p>
+        </div>
+        
+        <div class="content">
+            <div class="quick-actions">
+                <div class="action-card" onclick="quickMessage('Saya tidak bisa membeli tiket TransJakarta')">
+                    <h3>🎫 Beli Tiket</h3>
+                    <p>Bantuan pembelian tiket TransJakarta/MRT</p>
+                </div>
+                <div class="action-card" onclick="quickMessage('Bagaimana cara cari rute dari Blok M ke Bundaran HI?')">
+                    <h3>🗺️ Cari Rute</h3>
+                    <p>Pencarian rute & jadwal perjalanan</p>
+                </div>
+                <div class="action-card" onclick="quickMessage('Saya mau top up JakCard tapi gagal terus')">
+                    <h3>💳 Top Up & Bayar</h3>
+                    <p>JakCard, e-wallet, dan pembayaran</p>
+                </div>
+                <div class="action-card" onclick="quickMessage('Kenapa MRT terlambat? Ada gangguan ya?')">
+                    <h3>⚠️ Info Gangguan</h3>
+                    <p>Status operasional & gangguan layanan</p>
+                </div>
+                <div class="action-card" onclick="handleLiveCS()">
+                    <h3>Live Customer Service</h3>
+                    <p>Layanan tanya jawab langsung dengan CS</p>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="status-indicator"></div>
+                    🤖 AI Assistant (Real-time) - Online
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        🚌 Halo! Saya AI Assistant khusus transportasi Jakarta. Siap membantu dengan tiket TransJakarta, MRT, LRT, dan KRL! 
+                        <br><br>Ada yang bisa saya bantu hari ini? 🎫
+                    </div>
+                </div>
+                <div class="typing-indicator" id="typingIndicator">
+                    <span>AI sedang mengetik</span>
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <div class="chat-input">
+                        <input type="text" id="messageInput" placeholder="Ketik pesan Anda di sini..." onkeypress="handleKeyPress(event)">
+                        <button class="send-btn" onclick="sendMessage()">Kirim</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="satisfaction">
+                <h3>Apakah Anda puas dengan layanan kami?</h3>
+                <div class="satisfaction-buttons">
+                    <button class="satisfaction-btn yes" onclick="submitFeedback('yes')">👍 YA</button>
+                    <button class="satisfaction-btn no" onclick="submitFeedback('no')">👎 TIDAK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const typingIndicator = document.getElementById('typingIndicator');
+
+        // AI Integration Settings
+        const AI_CONFIG = {
+            // Set to true to use real AI API, false for local responses
+            useRealAI: false, 
+            
+            // API Configuration (uncomment and fill when ready to use)
+            apiEndpoint: 'https://api.anthropic.com/v1/messages', // Claude API
+            // apiEndpoint: 'https://api.openai.com/v1/chat/completions', // OpenAI API
+            apiKey: 'YOUR_API_KEY_HERE', // Replace with your actual API key
+            
+            // System prompt for transport app context
+            systemPrompt: `Kamu adalah asisten customer service untuk aplikasi tiket transportasi Jakarta. 
+            Aplikasi ini melayani pembelian tiket untuk TransJakarta, MRT, LRT, dan KRL Commuter Line.
+            
+            Fitur aplikasi:
+            - Pembelian tiket digital
+            - Pencarian rute multi-moda  
+            - JakCard (kartu transportasi terintegrasi)
+            - Top up saldo
+            - Info jadwal real-time
+            - Notifikasi gangguan
+            
+            Selalu jawab dalam bahasa Indonesia yang ramah dan helpful. 
+            Berikan solusi praktis dan step-by-step jika diperlukan.
+            Gunakan emoji yang relevan untuk membuat response lebih menarik.`
+        };
+
+        // Real AI API Call Function
+        async function callRealAI(userMessage) {
+            try {
+                const response = await fetch(AI_CONFIG.apiEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${AI_CONFIG.apiKey}`,
+                        'anthropic-version': '2023-06-01' // For Claude API
+                    },
+                    body: JSON.stringify({
+                        model: 'claude-3-sonnet-20240229', // Claude model
+                        max_tokens: 500,
+                        messages: [
+                            {
+                                role: 'user',
+                                content: `Context: ${AI_CONFIG.systemPrompt}\n\nUser question: ${userMessage}`
+                            }
+                        ]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data.content[0].text; // Claude response format
+                
+                // For OpenAI API, use this instead:
+                // return data.choices[0].message.content;
+                
+            } catch (error) {
+                console.error('AI API Error:', error);
+                return '🤖 Maaf, saya sedang mengalami gangguan koneksi. Silakan coba lagi atau hubungi customer service di 021-1234-5678.';
+            }
+        }
+        const aiResponses = {
+            'tiket': [
+                '🎫 Untuk pembelian tiket TransJakarta/MRT:\n\n📍 Pilih rute perjalanan Anda\n💰 Cek tarif (mulai Rp3.500)\n📱 Pilih metode pembayaran\n✅ Konfirmasi pembelian\n\n❓ Di bagian mana Anda mengalami kendala?',
+                '🚌 Saya bantu dengan tiket transportasi Anda!\n\nApakah masalahnya:\n• Tidak bisa pilih stasiun/halte?\n• Error saat checkout?\n• Tiket tidak muncul setelah bayar?\n\nJelaskan lebih detail ya!'
+            ],
+            'rute': [
+                '🗺️ Untuk pencarian rute:\n\n1. Masukkan stasiun/halte asal\n2. Pilih tujuan Anda\n3. Sistem akan tampilkan:\n   • Jalur yang dilalui\n   • Waktu tempuh\n   • Tarif perjalanan\n   • Transit (jika ada)\n\n📍 Rute mana yang ingin Anda cari?',
+                '🚇 Fitur pencari rute kami mencakup:\n• TransJakarta (semua koridor)\n• MRT Jakarta\n• LRT Jakarta\n• KRL Commuter Line\n\nDari mana ke mana perjalanan Anda?'
+            ],
+            'pembayaran': [
+                '💳 Metode pembayaran yang tersedia:\n\n📱 E-wallet:\n• JakCard\n• OVO, GoPay, Dana\n• ShopeePay, LinkAja\n\n🏦 Bank:\n• Transfer Bank\n• Virtual Account\n• Kartu Kredit/Debit\n\n🎫 Kartu Fisik:\n• Tap in langsung di stasiun\n\nMau pakai metode yang mana?',
+                '💰 Kalau pembayaran gagal, coba:\n\n1. Cek saldo e-wallet/rekening\n2. Pastikan koneksi internet stabil\n3. Gunakan metode pembayaran lain\n4. Restart aplikasi\n\nTiket akan otomatis masuk ke "Tiket Saya" setelah pembayaran berhasil!'
+            ],
+            'tarif': [
+                '💰 Info tarif transportasi Jakarta:\n\n🚌 TransJakarta: Rp3.500\n🚇 MRT: Rp3.000 - Rp14.000\n🚆 LRT: Rp5.000 - Rp12.000\n🚄 KRL: Rp3.000 - Rp7.000\n\n✨ Pakai JakCard dapat diskon!\n🎫 Beli paket harian/bulanan lebih hemat!',
+                '🎟️ Untuk menghemat biaya transport:\n\n• Beli tiket terusan multi-moda\n• Gunakan JakCard (cashless)\n• Ambil paket berlangganan\n• Cek promo di menu "Penawaran"\n\nMau info paket berlangganan?'
+            ],
+            'jadwal': [
+                '⏰ Jadwal operasional:\n\n🚌 TransJakarta:\n• Senin-Jumat: 05:00 - 22:00\n• Sabtu-Minggu: 06:00 - 22:00\n\n🚇 MRT Jakarta:\n• Setiap hari: 05:00 - 24:00\n\n🚆 LRT Jakarta:\n• Setiap hari: 05:30 - 22:00\n\nℹ️ Jadwal bisa berubah saat libur nasional!',
+                '🕐 Untuk cek jadwal real-time:\n\n1. Buka menu "Jadwal Live"\n2. Pilih stasiun/halte\n3. Lihat estimasi kedatangan\n\n⚡ Fitur notifikasi akan kasih tau kalau ada gangguan atau perubahan jadwal!'
+            ],
+            'gangguan': [
+                '⚠️ Info gangguan operasional:\n\n🔄 Cek status real-time di menu "Info Gangguan"\n📢 Follow sosial media @TransJakarta @mrtjkt\n📱 Aktifkan push notifikasi untuk update\n\n🚌 Jika ada gangguan, sistem akan sarankan rute alternatif otomatis!',
+                '🚨 Kalau ada masalah di perjalanan:\n\n• Hubungi petugas stasiun\n• Gunakan tombol "Laporkan Masalah"\n• Cek pengumuman di aplikasi\n• Gunakan rute alternatif yang disarankan\n\nAda gangguan apa yang Anda alami?'
+            ],
+            'jakcard': [
+                '🎫 JakCard - Kartu transportasi Jakarta:\n\n✅ Manfaat:\n• Tarif lebih murah\n• Tap sekali untuk semua moda\n• Tidak perlu beli tiket berulang\n• Bisa top up di aplikasi\n\n📍 Beli di:\n• Vending Machine stasiun\n• Loket petugas\n• Minimarket (Indomaret, Alfamart)\n\n💳 Mau registrasi JakCard?',
+                '💡 Tips pakai JakCard:\n\n• Top up sebelum saldo habis\n• Tap in & tap out di setiap stasiun\n• Satu kartu bisa untuk semua angkutan\n• Cek saldo di aplikasi atau vending\n\n❓ Ada masalah dengan JakCard Anda?'
+            ],
+            'topup': [
+                '💰 Cara top up saldo:\n\n📱 Di aplikasi:\n• Menu "Top Up"\n• Pilih nominal\n• Bayar pakai e-wallet/bank\n\n🏪 Offline:\n• Vending machine stasiun\n• Loket petugas\n• Minimarket terdekat\n\n⚡ Top up via aplikasi langsung masuk ke kartu/akun!',
+                '🔄 Kalau top up gagal:\n\n1. Cek koneksi internet\n2. Pastikan saldo e-wallet cukup\n3. Coba metode pembayaran lain\n4. Restart aplikasi\n\nSaldo akan otomatis bertambah dalam 1-2 menit!'
+            ],
+            'default': [
+                '🚌 Halo! Saya asisten digital untuk aplikasi tiket transportasi Jakarta. Saya bisa bantu dengan:\n\n🎫 Pembelian tiket\n🗺️ Pencarian rute\n💳 Pembayaran & top up\n⏰ Jadwal & info gangguan\n🎟️ JakCard\n\nAda yang bisa saya bantu?',
+                '👋 Selamat datang di layanan bantuan TransJakarta & MRT! Mau tanya tentang apa?\n\n• Cara beli tiket\n• Info rute & tarif\n• Masalah pembayaran\n• Jadwal keberangkatan\n• JakCard & top up',
+                '🚇 Saya siap membantu perjalanan Anda di Jakarta! Silakan pilih topik atau langsung tanyakan masalah yang Anda hadapi.',
+                '📱 Ada kendala dengan aplikasi transportasi? Saya akan bantu selesaikan step by step!'
+            ],
+        };
+        
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            messageDiv.innerHTML = message.replace(/\n/g, '<br>');
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            typingIndicator.style.display = 'flex';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            typingIndicator.style.display = 'none';
+        }
+
+        // Enhanced AI Response Function
+        async function getAIResponse(userMessage) {
+            // Check if real AI is enabled and API key is configured
+            if (AI_CONFIG.useRealAI && AI_CONFIG.apiKey !== 'YOUR_API_KEY_HERE') {
+                return await callRealAI(userMessage);
+            }
+            
+            // Fallback to local responses if real AI is not available
+            return getLocalAIResponse(userMessage);
+        }
+
+        function getLocalAIResponse(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            
+            // More specific keyword matching with priority order
+            if (lowerMessage.includes('gangguan') || lowerMessage.includes('terlambat') || lowerMessage.includes('delay') || 
+                lowerMessage.includes('rusak') || lowerMessage.includes('mati') || lowerMessage.includes('bermasalah') ||
+                (lowerMessage.includes('kenapa') && (lowerMessage.includes('mrt') || lowerMessage.includes('transjakarta') || lowerMessage.includes('lrt')))) {
+                return aiResponses.gangguan[Math.floor(Math.random() * aiResponses.gangguan.length)];
+            } else if (lowerMessage.includes('jakcard') || lowerMessage.includes('jak card') || 
+                      (lowerMessage.includes('kartu') && !lowerMessage.includes('kredit'))) {
+                return aiResponses.jakcard[Math.floor(Math.random() * aiResponses.jakcard.length)];
+            } else if (lowerMessage.includes('top up') || lowerMessage.includes('topup') || lowerMessage.includes('isi ulang') || 
+                      lowerMessage.includes('saldo') || lowerMessage.includes('isi saldo')) {
+                return aiResponses.topup[Math.floor(Math.random() * aiResponses.topup.length)];
+            } else if (lowerMessage.includes('rute') || lowerMessage.includes('jalan') || lowerMessage.includes('arah') ||
+                      (lowerMessage.includes('dari') && lowerMessage.includes('ke')) || lowerMessage.includes('bagaimana cara')) {
+                return aiResponses.rute[Math.floor(Math.random() * aiResponses.rute.length)];
+            } else if (lowerMessage.includes('tiket') || lowerMessage.includes('beli') || lowerMessage.includes('purchase') || 
+                      lowerMessage.includes('checkout') || lowerMessage.includes('tidak bisa beli')) {
+                return aiResponses.tiket[Math.floor(Math.random() * aiResponses.tiket.length)];
+            } else if (lowerMessage.includes('tarif') || lowerMessage.includes('harga') || lowerMessage.includes('biaya') || 
+                      lowerMessage.includes('ongkos') || lowerMessage.includes('berapa')) {
+                return aiResponses.tarif[Math.floor(Math.random() * aiResponses.tarif.length)];
+            } else if (lowerMessage.includes('jadwal') || lowerMessage.includes('jam') || lowerMessage.includes('waktu') || 
+                      lowerMessage.includes('operasional') || lowerMessage.includes('buka') || lowerMessage.includes('tutup')) {
+                return aiResponses.jadwal[Math.floor(Math.random() * aiResponses.jadwal.length)];
+            } else if (lowerMessage.includes('bayar') || lowerMessage.includes('payment') || lowerMessage.includes('pembayaran') || 
+                      lowerMessage.includes('metode') || lowerMessage.includes('gagal bayar')) {
+                return aiResponses.pembayaran[Math.floor(Math.random() * aiResponses.pembayaran.length)];
+            } else {
+                return aiResponses.default[Math.floor(Math.random() * aiResponses.default.length)];
+            }
+        }
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message === '') return;
+
+            // Add user message
+            addMessage(message, true);
+            messageInput.value = '';
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            // Get AI response (now supports real AI API)
+            getAIResponse(message).then(aiResponse => {
+                hideTypingIndicator();
+                addMessage(aiResponse);
+            }).catch(error => {
+                hideTypingIndicator();
+                console.error('Error getting AI response:', error);
+                addMessage('🤖 Maaf, saya mengalami kendala. Silakan coba lagi atau hubungi customer service langsung.');
+            });
+        }
+
+        function quickMessage(message) {
+            messageInput.value = message;
+            sendMessage();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function submitFeedback(feedback) {
+            const feedbackMessage = feedback === 'yes' 
+                ? '✅ Terima kasih atas feedback positif Anda! Kami senang bisa membantu.' 
+                : '📝 Terima kasih atas feedback Anda. Kami akan terus meningkatkan layanan untuk pengalaman yang lebih baik.';
+            
+            addMessage(feedbackMessage);
+            
+            // Hide satisfaction section after feedback
+            setTimeout(() => {
+                document.querySelector('.satisfaction').style.opacity = '0.5';
+                document.querySelector('.satisfaction').style.pointerEvents = 'none';
+            }, 2000);
+        }
+        
+        // Auto-scroll to chat when page loads
+        window.addEventListener('load', () => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            messageInput.focus();
+        });
+    </script>
+</body>
+</html>

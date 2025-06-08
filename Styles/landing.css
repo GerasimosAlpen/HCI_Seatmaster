@@ -2,136 +2,160 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Poppins, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Poppins, sans-serif;
   line-height: 1.6;
-  background: #f5f5f5;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 /* Header Navigation */
 .header {
-  background: #6b73a3;
+  background: white;
   padding: 16px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
 
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 32px;
-}
+  .nav-container {
+    max-width: 100vh;
+    margin: 32px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+  }
 
-.logo {
-  color: white;
-  font-size: 29px;
-  font-weight: bold;
-  text-decoration: none;
-}
+  .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px #1c1c1c solid;
+    border-radius: 34px;
+    backdrop-filter: blur(4px) !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 10.5px 24px;
+    /* margin-left: -160px; */
+    margin-right: 40px;
+  }
 
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 32px;
-}
+  .nav-menu {
+    font-size: 24px;
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    padding: 10.5px 32.5px;
+    border-radius: 34px;
+    border: 1px #1c1c1c solid;
+    backdrop-filter: blur(100px);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  }
 
-.nav-menu a {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  transition: color 0.3s;
-}
+  .nav-menu a {
+    color: white !important;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
 
-.nav-menu a:hover {
-  color: white;
-}
+  .nav-menu a:hover {
+    color: dimgrey !important;
+  }
 
-.login-btn {
-  background: white;
-  color: #6b73a3;
-  padding: 8px 24px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: transform 0.3s;
-}
+  .nav-menu a:visited {
+    color: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  }
 
-.login-btn:hover {
-  transform: translateY(-2px);
-}
+  .login-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 10.5px 32.5px;
+    border-radius: 34px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 24px;
+    transition: transform 0.3s;
+    margin-right: -120px;
+    display: block;
+  }
 
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
+  .login-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%);
+  }
 
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 3px 0;
-  transition: 0.3s;
+  /*.hamburger {*/
+  /*  display: none;*/
+  /*  flex-direction: column;*/
+  /*  cursor: pointer;*/
+  /*}*/
+
+  /*.hamburger span {*/
+  /*  width: 25px;*/
+  /*  height: 3px;*/
+  /*  background: white;*/
+  /*  margin: 3px 0;*/
+  /*  transition: 0.3s;*/
+  /*}*/
 }
 
 /* Hero Section */
 .hero {
-  background: #f0e6d2;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   padding: 64px 0;
   text-align: center;
-}
 
-.hero-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
 
-.hero h1 {
-  font-size: 40px;
-  margin-bottom: 32px;
-  color: #333;
-  font-weight: bold;
-}
+  .hero h1 {
+    font-size: 40px;
+    margin-bottom: 32px;
+    color: #333;
+    font-weight: bold;
+  }
 
-.transport-showcase {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin-top: 32px;
-  flex-wrap: wrap;
-}
+  .transport-showcase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
 
-.transportVehicle {
+  .transportVehicle {
     width: 800px;
-}
+  }
 
-.transportVehicle > img {
-  width: 100%;
-  background: #4a90e2;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  position: relative;
-}
+  .transportVehicle > img {
+    width: 100%;
+    background: #4a90e2;
+    border-radius: 10px;
+    border: 5px solid #4a90e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    position: relative;
+  }
 
-
-.tagline {
-  margin-top: 32px;
-  color: #666;
-  font-size: 16px;
+  .tagline {
+    margin-top: 48px;
+    margin-bottom: -36px;
+    color: #1c1c1c;
+    font-size: 24px;
+  }
 }
 
 /* Weather Section */
 .weather-section {
-  background: #6b73a3;
+  background: #ffffff80;
+  color: black !important;
   padding: 16px 0;
   color: white;
   text-align: center;
@@ -141,252 +165,281 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 32px;
-  font-size: 14px;
+  margin-bottom: -30px;
+  margin-top: 16px;
+  font-size: 24px;
 }
 
 /* Transportasi Section */
 .transportasi {
   padding: 64px 0;
-  background: #6b73a3;
+
+  background: #ffffff80;
+
+  .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .section-title {
+    font-size: 64px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 48px;
+    margin-left: 360px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .transport-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+    place-items: center;
+  }
+
+  .transport-card {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    width: 299px;
+    height: 475px;
+  }
+
+  .transport-card:hover {
+    transform: scale(1.05);
+  }
+
+  .card-image {
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: white;
+    position: relative;
+  }
+
+  .card-image img {
+    width: 500px;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .card-image.transjakarta img {
+    width: 300px;
+    height: 100%;
+    object-fit: contain;
+  }
+  .card-image.mrt {
+    background: linear-gradient(360deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .card-image.lrt {
+    background: linear-gradient(15deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .card-image.krl {
+    background: linear-gradient(-135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .card-image.transjakarta {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .card-content {
+    padding: 16px;
+    text-align: center;
+  }
+
+  .card-title {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .connecting-text {
+    color: #1c1c1c;
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 24px;
+  }
 }
 
-.section-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-.section-title {
-  font-size: 64px;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 48px;
-}
-
-.transport-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 2fr));
-  gap: 20px;
-  margin-bottom: 48px;
-  place-items: center;
-}
-
-.transport-card {
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: transform 0.3s;
-  width: 299px;
-  height: 475px;
-}
-
-.transport-card:hover {
-  transform: scale(1.05);
-}
-
-.card-image {
-  height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  color: white;
-  position: relative;
-}
-
-.card-image img {
-  width: 500px;
-  height: 100%;
-  object-fit: contain;
-}
-
-.card-image.transjakarta img {
-  width: 300px;
-  height: 100%;
-  object-fit: contain;
-}
-.card-image.mrt {
-  background: #4a90e2;
-}
-
-.card-image.lrt {
-  background: #e74c3c;
-}
-
-.card-image.krl {
-  background: #e74c3c;
-}
-
-.card-image.transjakarta {
-  background: #4a90e2;
-}
-
-.card-content {
-  padding: 16px;
-  text-align: center;
-}
-
-.card-title {
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.connecting-text {
-  color: white;
-  text-align: center;
-  margin-bottom: 32px;
-  font-size: 16px;
-}
-
+/*customer services*/
 .help-section {
   position: fixed;
   bottom: 32px;
   right: 32px;
   z-index: 1000;
-}
 
-.help-btn {
-  background: #4ecdc4;
-  color: white;
-  padding: 16px;
-  border-radius: 50px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s;
-}
+  .help-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+    font-size: 24px;
+    border: 2px darkred solid;
+  }
 
-.help-btn:hover {
-  background: #45b7aa;
+  .help-btn:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 40%);
+    backdrop-filter: blur(16px);
+  }
 }
 
 /* Route Section */
 .route-section {
   padding: 64px 0;
-  background: #f0e6d2;
-}
+  /*background: #f0e6d2;*/
+  .route-title {
+    font-size: 64px;
+    font-weight: bold;
+    color: #1c1c1c;
+    text-align: center;
+    margin-bottom: 48px;
+    gap: 4px !important;
+  }
 
-.route-title {
-  font-size: 64px;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-  margin-bottom: 48px;
-}
+  .route-maps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: space-between;
+    gap: 4px !important;
+  }
 
-.route-maps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 32px;
-}
+  .route-map {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    width: 300px;
+    margin-left: 80px;
+    margin-right: 80px !important;
+    justify-content: space-between;
+    gap: 16px;
+  }
 
-.route-map {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
+  .route-map:hover {
+    transform: translateY(-5px);
+  }
 
-.route-map:hover {
-  transform: translateY(-5px);
-}
+  .map-image {
+    height: auto;
+    width: auto;
+    /*background: #e8e8e8;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1c1c1c;
+    font-size: 28px;
+    position: relative;
+  }
 
-.map-image {
-  height: 300px;
-  background: #e8e8e8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-size: 16px;
-  position: relative;
-}
+  /*.map-lines {*/
+  /*  position: absolute;*/
+  /*  top: 20px;*/
+  /*  left: 20px;*/
+  /*  right: 20px;*/
+  /*  bottom: 20px;*/
+  /*  background: repeating-linear-gradient(0deg, #ccc 0px, #ccc 2px, transparent 2px, transparent 20px);*/
+  /*}*/
 
-.map-lines {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  background: repeating-linear-gradient(0deg, #ccc 0px, #ccc 2px, transparent 2px, transparent 20px);
-}
-
-.map-label {
-  padding: 16px;
-  text-align: center;
-  font-weight: bold;
-  color: #333;
-  background: white;
+  .map-label {
+    padding: 16px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    color: #1c1c1c;
+    background: white;
+  }
 }
 
 /* Buy Ticket Section */
 .ticket-section {
   padding: 64px 0;
-  background: #6b73a3;
+  background: #ffffff80;
   text-align: center;
-}
 
-.ticket-title {
-  font-size: 48px;
-  color: white;
-  margin-bottom: 48px;
-  font-weight: bold;
-}
+  .ticket-title {
+    font-size: 48px;
+    color: #1c1c1c;
+    margin-bottom: 48px;
+    font-weight: bold;
+  }
 
-.ticket-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
+  .ticket-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    width: 1680px;
+    margin: 0 auto;
+    padding: 32px 32px;
+  }
 
-.ticket-card {
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 15px;
-  padding: 32px;
-  color: white;
-  min-height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s, filter 0.3s;
-  cursor: pointer;
-  position: relative;
-  filter: blur(8px);
-}
+  .ticket-card {
+    gap: 32px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 32px;
+    color: white;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, filter 0.3s;
+    cursor: pointer;
+    position: relative;
+    /* filter: blur(
+      8px
+    ); pastikan ini sudah dihapus jika tidak ingin blur semua */
+  }
 
-.ticket-card:hover {
-  transform: scale(1.05);
-}
+  .ticket-card:hover {
+    transform: scale(1.05);
+  }
 
-.ticket-card.unlocked {
-  filter: blur(0px);
-}
+  .ticket-card.unlocked {
+    filter: blur(0px);
+  }
 
-.locked-content {
-  background: rgba(0, 0, 0, 0.9);
-}
+  .locked-content {
+    background: rgba(0, 0, 0, 0.9);
+  }
 
-.lock-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 15px;
-  backdrop-filter: blur(5px);
+  .ticket-card.locked-content > div:not(.lock-overlay) {
+    filter: blur(6px);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .lock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    z-index: 2;
+    backdrop-filter: none;
+  }
 }
+/* ...existing code... */
 
 .lock-icon {
   font-size: 32px;
@@ -425,86 +478,183 @@ body {
   background: #c0392b;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    top: 70px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 70px);
-    background: #6b73a3;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 32px;
-    transition: left 0.3s;
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+  .section-content,
+  .hero-content {
+    max-width: 100%;
+    padding: 0 16px;
   }
-
-  .nav-menu.active {
-    left: 0;
+  .route-section .route-maps {
+    grid-template-columns: 1fr 1fr;
   }
+}
 
-  .hamburger {
-    display: flex;
-  }
-
-  .hero h1 {
-    font-size: 32px;
-  }
-
+@media (max-width: 900px) {
   .section-title,
   .route-title,
   .ticket-title {
-    font-size: 40px;
+    font-size: 36px;
   }
-
-  .transport-showcase {
+  .transportasi .section-content {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+  .transportasi .transport-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .transportasi .transport-card {
+    max-width: 220px;
+  }
+  .route-section .route-maps {
+    grid-template-columns: 1fr;
+  }
+  .ticket-section .ticket-options {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 500px;
+    padding: 16px 0;
+  }
+  .header .nav-container {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    gap: 12px;
+    padding: 0 8px;
   }
-
-  .transport-vehicle {
-    width: 200px;
-    margin: 8px 0;
+  .header .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 8px 0 0 0;
+    margin-bottom: 8px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   }
+  .header .login-btn {
+    align-self: flex-end;
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    padding: 8px 16px;
+  }
+}
 
+@media (max-width: 600px) {
+  .header .nav-container {
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 8px;
+  }
+  .hero h1 {
+    font-size: 28px;
+  }
+  .transportasi .section-title,
+  .route-title,
+  .ticket-title {
+    font-size: 28px;
+  }
+  .transportasi .transport-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .transportasi .transport-card {
+    max-width: 100%;
+  }
+  .ticket-section .ticket-options {
+    grid-template-columns: 1fr;
+    padding: 0 8px;
+  }
+  .route-section .route-maps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
   .help-section {
-    bottom: 16px;
-    right: 16px;
+    bottom: 8px;
+    right: 8px;
   }
-
   .help-btn {
-    padding: 13px;
+    padding: 10px;
     font-size: 14px;
+  }
+  .ticket-section .ticket-options {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 100%;
+    padding: 0 4px;
+  }
+  .ticket-section .ticket-card {
+    max-width: 100%;
+    padding: 12px;
+  }
+  .header .nav-container {
+    padding: 0 4px;
+    gap: 8px;
+  }
+  .header .nav-menu {
+    font-size: 16px;
+    gap: 8px;
+    padding: 4px 0 0 0;
+  }
+  .header .login-btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin: 0 0 8px 0;
   }
 }
 
 @media (max-width: 480px) {
-  .nav-container {
-    padding: 0 16px;
+  .header .logo {
+    font-size: 18px;
+    padding: 8px 12px;
+    margin-left: 0;
+    margin-right: 0;
   }
-
-  .hero-content,
-  .section-content {
-    padding: 0 16px;
+  .header .nav-menu {
+    font-size: 16px;
+    gap: 12px;
+    padding: 8px 12px;
   }
-
+  .header .login-btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin-right: 0;
+  }
   .hero h1 {
-    font-size: 29px;
+    font-size: 20px;
   }
-
   .section-title,
   .route-title,
   .ticket-title {
-    font-size: 32px;
+    font-size: 20px;
   }
+  .transportasi .section-content,
+  .ticket-section .section-content,
+  .route-section .section-content {
+    padding: 0 4px;
+  }
+  .transportasi .transport-card,
+  .ticket-section .ticket-card {
+    max-width: 100%;
+    padding: 12px;
+  }
+  .card-image {
+    min-height: 120px;
+  }
+  .card-image img {
+    max-height: 120px;
+  }
+  .help-btn {
+    font-size: 12px;
+    padding: 7px;
+  }
+}
 
-  .transport-grid {
-    grid-template-columns: repeat(auto-fit, minmax(299px, 1fr));
-  }
-
-  .ticket-options {
-    grid-template-columns: 1fr;
-  }
+/* --- Pastikan grid utama pakai ini --- */
+.transportasi .transport-grid,
+.ticket-section .ticket-options,
+.route-section .route-maps {
+  width: 100%;
+  box-sizing: border-box;
 }
