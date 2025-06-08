@@ -19,7 +19,7 @@ body {
 
   .nav-container {
     max-width: 100vh;
-    margin: 0 auto;
+    margin: 32px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +36,7 @@ body {
     backdrop-filter: blur(4px) !important;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 10.5px 24px;
-    margin-left: -160px;
+    /* margin-left: -160px; */
     margin-right: 40px;
   }
 
@@ -173,6 +173,7 @@ body {
 /* Transportasi Section */
 .transportasi {
   padding: 64px 0;
+
   background: #ffffff80;
 
   .section-content {
@@ -186,11 +187,14 @@ body {
     font-weight: bold;
     color: black;
     margin-bottom: 48px;
+    margin-left: 360px;
+    justify-content: center;
+    align-items: center;
   }
 
   .transport-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px;
     margin-bottom: 48px;
     place-items: center;
@@ -378,12 +382,13 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 32px;
-    max-width: 1200px;
+    width: 1680px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 32px 32px;
   }
 
   .ticket-card {
+    gap: 32px;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 15px;
     padding: 32px;
@@ -395,7 +400,9 @@ body {
     transition: transform 0.3s, filter 0.3s;
     cursor: pointer;
     position: relative;
-    filter: blur(8px);  /* pastikan ini sudah dihapus jika tidak ingin blur semua */
+    /* filter: blur(
+      8px
+    ); pastikan ini sudah dihapus jika tidak ingin blur semua */
   }
 
   .ticket-card:hover {
@@ -471,97 +478,183 @@ body {
   background: #c0392b;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    top: 70px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 70px);
-    background: #6b73a3;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 32px;
-    transition: left 0.3s;
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+  .section-content,
+  .hero-content {
+    max-width: 100%;
+    padding: 0 16px;
   }
-
-  .nav-menu.active {
-    left: 0;
+  .route-section .route-maps {
+    grid-template-columns: 1fr 1fr;
   }
+}
 
-  .hamburger {
-    display: flex;
-  }
-
-  .hero h1 {
-    font-size: 32px;
-  }
-
+@media (max-width: 900px) {
   .section-title,
   .route-title,
   .ticket-title {
-    font-size: 40px;
+    font-size: 36px;
   }
-
-    .transportasi .section-content {
+  .transportasi .section-content {
     max-width: 100%;
     padding: 0 8px;
   }
   .transportasi .transport-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .transportasi .transport-card {
+    max-width: 220px;
+  }
+  .route-section .route-maps {
     grid-template-columns: 1fr;
   }
-}
-  .transport-showcase {
+  .ticket-section .ticket-options {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 500px;
+    padding: 16px 0;
+  }
+  .header .nav-container {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    gap: 12px;
+    padding: 0 8px;
   }
-
-  .transport-vehicle {
-    width: 200px;
-    margin: 8px 0;
+  .header .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 8px 0 0 0;
+    margin-bottom: 8px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   }
+  .header .login-btn {
+    align-self: flex-end;
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    padding: 8px 16px;
+  }
+}
 
+@media (max-width: 600px) {
+  .header .nav-container {
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 8px;
+  }
+  .hero h1 {
+    font-size: 28px;
+  }
+  .transportasi .section-title,
+  .route-title,
+  .ticket-title {
+    font-size: 28px;
+  }
+  .transportasi .transport-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .transportasi .transport-card {
+    max-width: 100%;
+  }
+  .ticket-section .ticket-options {
+    grid-template-columns: 1fr;
+    padding: 0 8px;
+  }
+  .route-section .route-maps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
   .help-section {
-    bottom: 16px;
-    right: 16px;
+    bottom: 8px;
+    right: 8px;
   }
-
   .help-btn {
-    padding: 13px;
+    padding: 10px;
     font-size: 14px;
   }
+  .ticket-section .ticket-options {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 100%;
+    padding: 0 4px;
+  }
+  .ticket-section .ticket-card {
+    max-width: 100%;
+    padding: 12px;
+  }
+  .header .nav-container {
+    padding: 0 4px;
+    gap: 8px;
+  }
+  .header .nav-menu {
+    font-size: 16px;
+    gap: 8px;
+    padding: 4px 0 0 0;
+  }
+  .header .login-btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin: 0 0 8px 0;
+  }
+}
 
 @media (max-width: 480px) {
-  .nav-container {
-    padding: 0 16px;
+  .header .logo {
+    font-size: 18px;
+    padding: 8px 12px;
+    margin-left: 0;
+    margin-right: 0;
   }
-
-  .hero-content,
-  .section-content {
-    padding: 0 16px;
+  .header .nav-menu {
+    font-size: 16px;
+    gap: 12px;
+    padding: 8px 12px;
   }
-
+  .header .login-btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin-right: 0;
+  }
   .hero h1 {
-    font-size: 29px;
+    font-size: 20px;
   }
-
   .section-title,
   .route-title,
   .ticket-title {
-    font-size: 32px;
+    font-size: 20px;
   }
+  .transportasi .section-content,
+  .ticket-section .section-content,
+  .route-section .section-content {
+    padding: 0 4px;
+  }
+  .transportasi .transport-card,
+  .ticket-section .ticket-card {
+    max-width: 100%;
+    padding: 12px;
+  }
+  .card-image {
+    min-height: 120px;
+  }
+  .card-image img {
+    max-height: 120px;
+  }
+  .help-btn {
+    font-size: 12px;
+    padding: 7px;
+  }
+}
 
-  .transport-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 32px;
-    margin-bottom: 48px;
-    place-items: center;
-  }
-
-  .ticket-options {
-    grid-template-columns: 1fr;
-  }
+/* --- Pastikan grid utama pakai ini --- */
+.transportasi .transport-grid,
+.ticket-section .ticket-options,
+.route-section .route-maps {
+  width: 100%;
+  box-sizing: border-box;
 }
