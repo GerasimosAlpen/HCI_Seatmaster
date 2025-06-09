@@ -7,102 +7,122 @@
     <link rel="stylesheet" href="Styles/pageLRT.css" />
   </head>
   <body>
-    <!-- Top Navigation -->
-    <nav class="navbar">
-      <div class="logo">SEAT <span>MASTER</span></div>
-      <ul class="nav-links">
-        <li>Transportasi</li>
-        <li>Route</li>
-        <li>Capacity</li>
-        <li>Buy Ticket</li>
-      </ul>
-      <div class="profile-icon">
-        <!-- Profile Icon Asset -->
-        <!-- <img src="profile.png" alt="Profile" /> -->
-      </div>
-    </nav>
+       <!-- Header -->
+    <header class="header">
+        <div class="logo">SEAT MASTER</div>
+        <nav class="nav">
+            <a href="#transport">Transportasi</a>
+            <a href="#route">Route</a>
+            <a href="#capacity">Capacity</a>
+            <a href="#ticket">Buy Ticket</a>
+            <div class="user-icon">👤</div>
+        </nav>
+    </header>
 
-    <!-- Header Section -->
-    <section class="header-section">
-      <div class="header-content">
+    <!-- Hero Section -->
+    <section class="hero">
         <h1>Connecting All your transportation</h1>
-        <p class="weather">
-          Recent Weather at Lebak Bulus :
-          <span class="weather-icon">☀️</span> Sunny, 32°C (15:21, Sunday, 15
-          March 2025)
-        </p>
-        <h2>LRT (EDITION)</h2>
+        <div class="weather-info">
+            Recent Weather at Lebak Bulus : <span class="sun-icon">☀</span> Sunny, 32°C (15:21, Sunday, 15 March 2025)
+        </div>
+        <div class="lrt-title">
+          LRT (EDITION)
+        </div>
+        <div class="paragraph">
+          <p>Connecting All Your Transportation</p>
+        </div>
+        
+    </section>
+
+      <main class="main-content">
+        <div class="route-selector">
+            <div class="help-section">
+                <h3>Need Help?</h3>
+                <button class="contact-btn">
+                    <span>💬</span> Contact Us!
+                </button>
+            </div>
+            
+            <div class="fastest-route">
+                <h2>Fastest Route</h2>
+                
+                <div class="station-input">
+                    <div class="location-icon"></div>
+                    <select id="fromStation">
+                        <option>Stasiun</option>
+                        <option>Lebak Bulus</option>
+                        <option>Fatmawati</option>
+                        <option>Cipete Raya</option>
+                        <option>Haji Nawi</option>
+                        <option>Blok A</option>
+                        <option>Blok M</option>
+                    </select>
+                </div>
+                
+                <div class="station-input">
+                    <div class="destination-icon"></div>
+                    <select id="toStation">
+                        <option>Stasiun</option>
+                        <option>Kelapa Gading</option>
+                        <option>Boulevard Utara</option>
+                        <option>Boulevard Selatan</option>
+                        <option>Pegangsaan Dua</option>
+                        <option>Pulomas</option>
+                        <option>Velodrome</option>
+                    </select>
+                </div>
+                
+                <button class="go-btn" onclick="searchRoute()">GO!</button>
+            </div>
+        </div>
+
+        <div class="train-illustration">
+            <div class="train-container">
+                <div class="train">
+                    <div class="train-window"></div>
+                    <div class="train-door"></div>
+                    <div class="train-lights">
+                        <div class="light red"></div>
+                        <div class="light green"></div>
+                        <div class="light blue"></div>
+                    </div>
+                </div>
+                <div class="train-front"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Transportation Grid -->
+    <section class="transport-grid" id="transport">
+        <div class="weather-bottom">
+            Recent Weather at Lebak Bulus : <span class="sun-icon">☀</span> Sunny, 32°C (15:21, Sunday, 15 March 2025)
+        </div>
+        <h2 class="transport-title">Transportasi</h2>
+        
+        <div class="transport-cards">
+            <div class="transport-card mrt" onclick="selectTransport('MRT')">
+                <div class="card-illustration">🚇</div>
+                <div class="card-label">MRT</div>
+            </div>
+            <div class="transport-card lrt" onclick="selectTransport('LRT')">
+                <div class="card-illustration">🚊</div>
+                <div class="card-label">LRT</div>
+            </div>
+            <div class="transport-card krl" onclick="selectTransport('KRL')">
+                <div class="card-illustration">🚂</div>
+                <div class="card-label">KRL</div>
+            </div>
+            <div class="transport-card transjakarta" onclick="selectTransport('TransJakarta')">
+                <div class="card-illustration">🚌</div>
+                <div class="card-label">Trans Jakarta</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
         <p>Connecting All Your Transportation</p>
-      </div>
-    </section>
-
-    <!-- Fastest Route Section -->
-    <section class="fastest-route-section">
-      <div class="help">
-        <span>Need Help?</span>
-        <span class="contact-us">Contact Us</span>
-      </div>
-      <div class="fastest-route-container">
-        <div class="route-form-left">
-          <h2>Fastest Route</h2>
-          <form class="route-form">
-            <div class="input-group">
-              <label for="start">Start</label>
-              <div class="input-icon">
-                <!-- Start Icon Asset -->
-                <!-- <img src="start-icon.png" alt="Start" /> -->
-                <select id="start" name="start">
-                  <option>Stasiun</option>
-                  <!-- Add more options -->
-                </select>
-              </div>
-            </div>
-            <div class="input-group">
-              <label for="end">Ending</label>
-              <div class="input-icon">
-                <!-- End Icon Asset -->
-                <!-- <img src="end-icon.png" alt="End" /> -->
-                <select id="end" name="end">
-                  <option>Stasiun</option>
-                  <!-- Add more options -->
-                </select>
-              </div>
-            </div>
-            <button class="go-btn" type="submit">GO!</button>
-          </form>
-        </div>
-        <div class="route-form-right">
-          <!-- Train Image Asset -->
-          <!-- <img src="train.png" alt="Train" class="train-img" /> -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Buy Ticket Section -->
-    <section class="buy-ticket-section">
-      <h2>Buy Ticket</h2>
-      <div class="ticket-options">
-        <div class="ticket-card">
-          <!-- <img src="mrt.png" alt="MRT" /> -->
-          <span>MRT</span>
-        </div>
-        <div class="ticket-card">
-          <!-- <img src="lrt.png" alt="LRT" /> -->
-          <span>LRT</span>
-        </div>
-        <div class="ticket-card">
-          <!-- <img src="krl.png" alt="KRL" /> -->
-          <span>KRL</span>
-        </div>
-        <div class="ticket-card">
-          <!-- <img src="tj.png" alt="Trans Jakarta" /> -->
-          <span>Trans Jakarta</span>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <p>Connecting All Your Transportation</p>
+        <button class="footer-contact">💬</button>
     </footer>
     <script src="Logic/pageLRT.js"></script>
   </body>
